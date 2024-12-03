@@ -1,0 +1,23 @@
+@use '../../scss/base/_mixins' as *;
+@use '../../scss/base/_vars' as *;
+
+.button-inner {
+  background-color: $c-green; // Зеленый
+  color: white;
+  border: none;
+  width: 100%;
+  max-width: 180px;
+  padding: 14px 20px;
+  border-radius: 50px;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all .2s;
+
+  @include hover {
+    background-color: $c-green;
+    box-shadow: $box-shadow-btn-2;
+  }
+}

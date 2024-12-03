@@ -1,0 +1,54 @@
+@use '../../scss/base/_mixins' as *;
+@use '../../scss/base/_vars' as *;
+
+.promo-button {
+  $root: &;
+
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 70px;
+  width: auto;
+  border: 3px dotted #200069;
+  border-radius: 6px;
+  background: #004EC8;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    padding: 20px;
+    margin-right: 20px;
+    border-right: 3px dotted #200069;
+  }
+
+  &__icon {
+    height: 30px;
+    width: 30px;
+  }
+
+  &__text {
+
+  }
+
+  &--google {
+    border-color: #00AB2B;
+    background: #00AB2B;
+
+    #{$root}__icon-wrapper {
+      width: auto;
+      height: 40px;
+      border-right: 2px solid white;
+    }
+
+    #{$root}__icon {
+      width: 70px;
+    }
+  }
+}

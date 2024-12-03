@@ -1,0 +1,52 @@
+include ../button-close/button-close
+
+mixin input(params)
+    -
+        var {
+            /**
+             * @type {string}
+             * */
+            label,
+            /**
+             * @type {string}
+             * */
+            id,
+            /**
+             * @type {string}
+             * */
+            errorMessage,
+            /**
+             * @type {boolean}
+             * @description выводить лейбл вне поля ввода
+             * */
+            classes,
+            /**
+             * @type {string}
+             * @description имя левой иконки, передается в миксин svgsprite
+             * */
+        } = params
+
+        var classResult = classes || ''
+
+    .input-common.js-input-common(
+        class=classResult
+    )
+        label(for=id).input-common__label=label
+        -
+            var inputClasses = ''
+        .input-common__input-field
+            input(
+                class=`input-common__input ${inputClasses}`
+                id=id
+                data-error-message=errorMessage
+            )&attributes(attributes)
+            +button-close().input-common__clear-btn.js-input-common-clear-btn
+
+        .input-common__message.js-input__error-message(
+            id=id + '_error'
+            aria-hidden='true'
+        )
+            +svgsprite('error-ic')
+            span=errorMessage
+
+

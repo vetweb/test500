@@ -1,0 +1,31 @@
+mixin button(button)
+    if button
+        -
+            var {
+                svgLeft,
+                svgRight,
+                text,
+                type,
+                url,
+            } = button
+        if type === 'button'
+            button.button&attributes(attributes)
+                if svgLeft
+                    +svgsprite(svgLeft)
+                span.button__text= text
+                if svgRight
+                    +svgsprite(svgRight)
+        else if type === 'link-btn'
+            a.button&attributes(attributes)(href=url)
+                if svgLeft
+                    +svgsprite(svgLeft)
+                span.button__text= text
+                if svgRight
+                    +svgsprite(svgRight)
+        else if type === 'link'
+            a.button.button--link&attributes(attributes)(href=url)
+                if svgLeft
+                    +svgsprite(svgLeft)
+                span.button__text= text
+                if svgRight
+                    +svgsprite(svgRight)

@@ -1,0 +1,252 @@
+extends _layouts/default
+
+block content
+
+    include ../ui/modal/modal
+    include ../ui/select/select
+    include ../ui/input/input
+    include ../ui/button/button
+    include ../ui/button-circle/button-circle
+    include ../ui/button-icon/button-icon
+    include ../ui/button-close/button-close
+    include ../ui/ui-menu/ui-menu
+
+    .container
+        .ui
+            .ui__item
+                .ui__header#buttons Buttons
+                .ui__item-group
+                    .ui__item-group-title Button Primary
+                    +button({
+                        text: 'Попробовать бесплатно',
+                        type: 'button'
+                    }).button-small.button-tablet-medium.button-desktop-large
+                    +button({
+                        text: 'Попробовать бесплатно',
+                        type: 'button'
+                    }).button--no-shadow.button-small.button-tablet-medium.button-desktop-large
+                .ui__item-group
+                    .ui__item-group-title Button Secondary
+                    +button({
+                        text: 'Попробовать бесплатно',
+                        type: 'link-btn',
+                        url: '##'
+                    }).button--secondary.button-small.button-tablet-medium.button-desktop-large
+                .ui__item-group
+                    .ui__item-group-title Button Text
+                    +button({
+                        text: 'Button',
+                        type: 'link',
+                        url: '##',
+                    })
+                    br
+                    +button({
+                        text: 'Button',
+                        type: 'link',
+                        url: '##',
+                        svgLeft: 'check-ic'
+                    }).button--link-icon.button--link-icon-left
+                    br
+                    +button({
+                        text: 'Button',
+                        type: 'link',
+                        url: '##',
+                        svgRight: 'check-ic'
+                    }).button--link-icon.button--link-icon-right
+                .ui__item-group
+                    .ui__item-group-title Button Circle White
+                    +button-circle()
+                    +button-circle().button-circle-small
+                .ui__item-group
+                    .ui__item-group-title Button Icon
+                    +button-icon()
+                    +button-icon().button-icon-small
+                .ui__item-group
+                    .ui__item-group-title Button Close
+                    +button-close()
+            .ui__item
+                .ui__header#inputs Inputs
+                .ui__item-group
+                    .ui__item-group-title Inputs all
+                    +input({
+                        label: 'Label',
+                        id: 'qwe',
+                        errorMessage: 'Supporting text',
+                        classes: '',
+                    })(
+                        type='text',
+                        name='name',
+                        required,
+                    )
+                    +input({
+                        label: 'Label',
+                        id: 'qwe',
+                        errorMessage: 'Supporting text',
+                        classes: '_error',
+                    })(
+                        type='text',
+                        name='name',
+                        required,
+                    )
+                    +input({
+                        label: 'Label',
+                        id: 'qwe',
+                        errorMessage: 'Supporting text',
+                        classes: '_small',
+                    })(
+                        type='text',
+                        name='name',
+                        required,
+                    )
+                    +input({
+                        label: 'Label',
+                        id: 'qwe',
+                        errorMessage: 'Supporting text',
+                        classes: '_error _small',
+                    })(
+                        type='text',
+                        name='name',
+                        required,
+                    )
+            .ui__item
+                .ui__header#selects Selects
+                .ui__item-group
+                    .ui__item-group-title Selects
+                    +select({
+                        id: 'example-select',
+                        options: [
+                            {value: 'option1', text: 'Option fsdf 1', selected: true},
+                            {value: 'option2', text: 'Option ffd 2'},
+                            {value: 'option3', text: 'Optionfef 3'}
+                        ],
+                        classes: ''
+                    })
+                    br
+                    br
+                    +select({
+                        id: 'example-select-2',
+                        options: [
+                            {value: 'option1', text: 'Optionww 1', selected: true},
+                            {value: 'option2', text: 'Option  fdfdf 2'},
+                            {value: 'option3', text: 'Option ffw 3'}
+                        ],
+                        classes: 'custom-select-small'
+                    })
+            .ui__item
+                .ui__header#titles Titles
+                .ui__item-group
+                    .ui__item-group-title Titles Desktop
+                        .title.title-desktop-extra-large Title Extra Large
+                        .title.title-desktop-large Title Large
+                        .title.title-desktop-medium Title Medium
+                        .title.title-desktop-small Title Small
+                .ui__item-group
+                    .ui__item-group-title Titles tablet
+                        .title.title-tablet-extra-large Title Extra Large
+                        .title.title-tablet-large Title Large
+                        .title.title-tablet-medium Title Medium
+                        .title.title-tablet-small Title Small
+                .ui__item-group
+                    .ui__item-group-title Titles mobile
+                        .title.title-extra-large Title Extra Large
+                        .title.title-large Title Large
+                        .title.title-medium Title Medium
+                        .title.title-small Title Small
+            .ui__item
+                .ui__header#body-text Body text
+                .ui__item-group
+                    .ui__item-group-title Body text 22
+                    .body-22.body-bold Body text
+                    .body-22.body-semi Body text
+                    .body-22.body-reg Body text
+                .ui__item-group
+                    .ui__item-group-title Body text 20
+                    .body-20.body-bold Body text
+                    .body-20.body-semi Body text
+                    .body-20.body-reg Body text
+                .ui__item-group
+                    .ui__item-group-title Body text 18
+                    .body-18.body-bold Body text
+                    .body-18.body-semi Body text
+                    .body-18.body-reg Body text
+                .ui__item-group
+                    .ui__item-group-title Body text 16
+                    .body-16.body-bold Body text
+                    .body-16.body-semi Body text
+                    .body-16.body-medium Body text
+                    .body-16.body-reg Body text
+                .ui__item-group
+                    .ui__item-group-title Body text 14
+                    .body-14.body-bold Body text
+                    .body-14.body-semi Body text
+                    .body-14.body-reg Body text
+                .ui__item-group
+                    .ui__item-group-title Body text 12
+                    .body-12.body-bold Body text
+                    .body-12.body-semi Body text
+                    .body-12.body-reg Body text
+            .ui__item
+                .ui__header#modals Модальные окна
+                .ui__item-group
+                    +button({
+                        text: 'Открыть модальное окно',
+                        type: 'button'
+                    }).button.button-small.button-tablet-medium.button-desktop-large(data-open-modal="example-modal")
+                    +button({
+                        text: 'Открыть модальное окно 2',
+                        type: 'button'
+                    }).button.button-small.button-tablet-medium.button-desktop-large(data-open-modal="second-modal")
+                    +modal(
+                        'example-modal',
+                        '',
+                        'Оставьте заявку',
+                        'Наш менеджер перезвонит вам и  ответит на все Ваши вопросы.'
+                    )
+                        form.form(id="modal-form")
+                            .form__field
+                                +input({
+                                    label: 'Имя',
+                                    id: 'name',
+                                    errorMessage: 'Имя is required',
+                                })(
+                                    type='text',
+                                    name='name',
+                                    required
+                                )
+                            .form__field
+                                +input({
+                                    label: 'Имя',
+                                    id: 'name',
+                                    errorMessage: 'Имя is required',
+                                })(
+                                    type='text',
+                                    name='name',
+                                    required
+                                )
+                            .form__field
+                                +input({
+                                    label: 'Имя',
+                                    id: 'name',
+                                    errorMessage: 'Имя is required',
+                                })(
+                                    type='text',
+                                    name='name',
+                                    required
+                                )
+                            .form__button
+                                +button({
+                                    text: 'Отправить',
+                                    type: 'button'
+                                }).button.button--wide.button-small.button-tablet-medium.button-desktop-large
+                            .form__policy.body-12.body-reg Оставляя заявку, вы соглашаетесь на обработку ваших персональных данных на условиях, определяемых <a href="##">политикой конфиденциальности</a>
+
+                    +modal(
+                        'second-modal',
+                        '',
+                        'Оставьте заявку',
+                        'Наш менеджер перезвонит вам и  ответит на все Ваши вопросы.'
+                    )
+                        +button({
+                            text: 'Отправить',
+                            type: 'button'
+                        }).button.button--wide.button-small.button-tablet-medium.button-desktop-large

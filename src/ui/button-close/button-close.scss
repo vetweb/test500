@@ -1,0 +1,28 @@
+@use '../../scss/base/_mixins' as *;
+@use '../../scss/base/_vars' as *;
+
+/* Основной стиль кнопки */
+.button-close {
+  $root: &;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all .2s;
+  text-decoration: none;
+  background: none;
+  color: #A6B0C0;
+
+  @include hover {
+    color: $color-text;
+  }
+
+  .svgsprite {
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+  }
+}

@@ -1,0 +1,42 @@
+@use '../../scss/base/_mixins' as *;
+@use '../../scss/base/_vars' as *;
+
+/* Основной стиль кнопки */
+.button-circle {
+  $root: &;
+
+  border: none;
+  cursor: pointer;
+  transition: all .2s;
+  box-shadow: $box-shadow-btn;
+  text-decoration: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  color: $color-state;
+  text-align: center;
+
+  @include hover {
+    box-shadow: $box-shadow-btn-2;
+  }
+
+  .svgsprite {
+    width: 10px;
+    height: 17px;
+  }
+
+  &.button-circle-small {
+    width: 32px;
+    height: 32px;
+    box-shadow: $box-shadow-btn-sm;
+
+    .svgsprite {
+      width: 6px;
+      height: 12px;
+    }
+
+    @include hover {
+      box-shadow: $box-shadow-btn-2-sm;
+    }
+  }
+}

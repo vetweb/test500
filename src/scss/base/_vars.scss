@@ -1,0 +1,71 @@
+/* Fonts */
+$font-family: 'Jost', sans-serif;
+$font-family-second: 'Inter', sans-serif;
+$font-family-alt: 'Arial', $font-family;
+$font-size: 10px;
+$font-weight: normal;
+$letter-spacing: normal;
+$line-height: 1.2;
+$transition-duration: .2s;
+$transition-timing-function: ease-in-out;
+
+
+$color-state: #25BA7B;
+$color-state-tone: #00CD83;
+$color-text: #181C24;
+$color-white: #ffffff;
+$color-dark-blue: #200069;
+$color-bg: #200069;
+$color-gray: #3D475A;
+$color-gray400: #818EA3;
+$color-gray700: #DEE4EE;
+$color-gray800: #F0F4FA;
+$color-blue900: #F6F8FC;
+$color-violet300: #4C53FF;
+$color-error: #FF5656;
+$color-active: $color-state-tone;
+$box-shadow-btn: 0 10px 30px 0 rgba(0, 79, 176, 0.1);
+$box-shadow-btn-sm: 0 5px 30px 0 rgba(0, 79, 176, 0.1);
+$box-shadow-btn-2: 0 10px 30px 0 rgba(0, 79, 176, 0.2);
+$box-shadow-btn-2-sm: 0 5px 30px 0 rgba(0, 79, 176, 0.2);
+
+$link-state: $color-state;
+
+$input-error: $color-error;
+$input-active: $color-state-tone;
+$input-label: $color-gray;
+
+$select-border: $color-gray700;
+$select-border-hover: $color-state;
+$select-option-hover: $color-gray800;
+$select-icon-option-selected: $color-state;
+
+$input-active: $color-state-tone;
+$input-label: $color-gray;
+
+$button-state: $color-state;
+$button-state-text: $color-white;
+$button-state-hover: $color-state-tone;
+
+$button-secondary-state: rgba(37, 186, 123, 0.1);
+$button-secondary-state-text: $color-state;
+$button-secondary-state-hover: rgba(37, 186, 123, 0.2);
+
+$zoom-sizes: [100, 125, 150, 175, 200];
+
+/* Screen sizes */
+$grid-breakpoints: (
+        sm: 320px,
+        md: 768px,
+        lg: 1280px,
+        xl: 1500px
+);
+
+//Layouts vars
+
+$c-green: #00CC33;
+$c-dark-blue: #200069;
+$c-violet: #6443AF;
+$c-violet-dark: #350F8C;
+
+$colo-top-menu: $color-dark-blue;

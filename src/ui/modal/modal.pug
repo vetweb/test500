@@ -1,0 +1,12 @@
+mixin modal(name, classes, title, description)
+    div(class="modal modal--" + name + (classes ? ' ' + classes : ''))&attributes(attributes)
+        .modal__backdrop(data-close-modal)
+        .modal__content
+            +button-close().modal__close(data-close-modal)
+                +svgsprite('close-ic').modal__close-icon
+            .modal__header
+                if title
+                    h2.title.title-desktop-medium.modal__header-title= title
+                if description
+                    .modal__header-description.body-16.body-reg= description
+            block

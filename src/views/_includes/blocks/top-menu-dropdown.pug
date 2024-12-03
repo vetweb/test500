@@ -1,0 +1,68 @@
+include ../mixins/svgsprite
+
+.top-menu-dropdown.js-menu-top-content
+    .top-menu-dropdown__wrapper
+        .top-menu-dropdown__categories
+            .top-menu-dropdown__categories-content
+                .top-menu-dropdown__categories-links
+                    h3.top-menu-dropdown__group-title Aircare
+                    ul.top-menu-dropdown__menu-links
+                        li
+                            a(href="##").top-menu-dropdown__link Cooling
+                        li
+                            a(href="##").top-menu-dropdown__link Heating
+                        li
+                            a(href="##").top-menu-dropdown__link Indoor Air Quality
+                        li
+                            a(href="##").top-menu-dropdown__link Ducts, Vents, & Airflow
+                a(href="##").top-menu-dropdown__link.top-menu-dropdown__link--with-icon
+                    +svgsprite('emergency-ic').top-menu-dropdown__link-icon
+                    | Emergency Service
+            button.promo-button.top-menu-dropdown__promo-button
+                span.promo-button__icon-wrapper
+                    +svgsprite('gift-ic').promo-button__icon
+                span.promo-button__text $100 OFF First-time Customer
+        .top-menu-dropdown__categories
+            .top-menu-dropdown__categories-content
+                .top-menu-dropdown__categories-links
+                    h3.top-menu-dropdown__group-title Powercare
+                    ul.top-menu-dropdown__menu-links
+                        li
+                            a(href="##").top-menu-dropdown__link Electrical
+                        li
+                            a(href="##").top-menu-dropdown__link Whole-home Generators
+                        li
+                            a(href="##").top-menu-dropdown__link Gas Plumbing
+                a(href="##").top-menu-dropdown__link.top-menu-dropdown__link--with-icon
+                    +svgsprite('audits-ic').top-menu-dropdown__link-icon
+                    | Inspections & Energy Audits
+            button.promo-button.top-menu-dropdown__promo-button
+                span.promo-button__icon-wrapper
+                    +svgsprite('percent-ic').promo-button__icon
+                span.promo-button__text Get a Free A/C as Low as $7.6
+        .top-menu-dropdown__categories
+            .top-menu-dropdown__categories-content
+                .top-menu-dropdown__categories-links
+                    h3.top-menu-dropdown__group-title Hydrocare
+                    ul.top-menu-dropdown__menu-links
+                        li
+                            a(href="##").top-menu-dropdown__link Plumbing
+                        li
+                            a(href="##").top-menu-dropdown__link Water Quality
+                        li
+                            a(href="##").top-menu-dropdown__link Water Heaters
+                        li
+                            a(href="##").top-menu-dropdown__link Sump Pumps
+                        li
+                            a(href="##").top-menu-dropdown__link Water Leak Detection & Repairs
+                        li
+                            a(href="##").top-menu-dropdown__link Septic
+                        li
+                            a(href="##").top-menu-dropdown__link Sewer & Drains
+                a(href="##").top-menu-dropdown__link.top-menu-dropdown__link--with-icon
+                    +svgsprite('plans-ic').top-menu-dropdown__link-icon
+                    | Service Plans
+            button.promo-button.promo-button--google.top-menu-dropdown__promo-button
+                span.promo-button__icon-wrapper
+                    +svgsprite('goo2-ic').promo-button__icon
+                span.promo-button__text 400+ <br> 5-star reviews

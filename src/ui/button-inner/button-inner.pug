@@ -1,0 +1,29 @@
+mixin button-inner(button)
+    if button
+        -
+            var {
+                svgLeft,
+                svgRight,
+                text,
+                type,
+                url,
+            } = button
+        if type === 'button'
+            button.button-inner&attributes(attributes)
+                span.button-inner__text= text
+                if svgRight
+                    +svgsprite(svgRight).button-inner__icon
+        else if type === 'link-btn'
+            a.button-inner&attributes(attributes)(href=url)
+                if svgLeft
+                    +svgsprite(svgLeft).button-inner__icon
+                span.button-inner__text= text
+                if svgRight
+                    +svgsprite(svgRight).button-inner__icon
+        else if type === 'link'
+            a.button-inner.button-inner--link&attributes(attributes)(href=url)
+                if svgLeft
+                    +svgsprite(svgLeft).button-inner__icon
+                span.button-inner__text= text
+                if svgRight
+                    +svgsprite(svgRight).button-inner__icon

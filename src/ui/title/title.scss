@@ -1,0 +1,51 @@
+@use '../../scss/base/_mixins' as *;
+@use '../../scss/base/_vars' as *;
+
+.title {
+  font-weight: bold;
+
+  &.title-extra-large {
+    font-size: 28px;
+  }
+  &.title-large {
+    font-size: 24px;
+  }
+  &.title-medium {
+    font-size: 18px;
+  }
+
+  &.title-small {
+    font-size: 16px;
+  }
+
+  @include up(lg) {
+    &.title-desktop-extra-large {
+      font-size: 52px;
+    }
+    &.title-desktop-large {
+      font-size: 46px;
+    }
+    &.title-desktop-medium {
+      font-size: 32px;
+    }
+
+    &.title-desktop-small {
+      font-size: 20px;
+    }
+  }
+  @include up(md) {
+    &.title-tablet-extra-large {
+      font-size: 42px;
+    }
+    &.title-tablet-large {
+      font-size: 36px;
+    }
+    &.title-tablet-medium {
+      font-size: 24px;
+    }
+
+    &.title-tablet-small {
+      font-size: 20px;
+    }
+  }
+}

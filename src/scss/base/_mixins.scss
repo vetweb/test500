@@ -1,0 +1,263 @@
+@use 'sass:math';
+@use 'vars' as *;
+@use "sass:map";
+
+/**
+ * Helper mixins
+*/
+
+@mixin transition($p) {
+  & {
+    transition-property: $p;
+    transition-duration: $transition-duration;
+    transition-timing-function: $transition-timing-function;
+  }
+}
+
+@mixin border-inset($width, $color) {
+  box-shadow:
+          inset $width 0 0 $color,
+          inset 0 $width 0 $color,
+          inset (-$width) 0 0 $color,
+          inset 0 (-$width) 0 $color;
+}
+
+@mixin hover() {
+  @include hover-mouse-only {
+    &:hover {
+      @content;
+    }
+  }
+
+  &:active {
+    @content;
+  }
+
+  @include focus() {
+    @content;
+  }
+}
+
+@mixin focus() {
+  body:not(._use-mouse) & {
+    // sass не поддерживает @supports selector(:focus-visible), но есть обходной путь:
+    // https://stackoverflow.com/a/62666132
+    @supports #{'\selector(:focus-visible)'} {
+    &:focus-visible {
+      @content;
+
+      &:not(input):not(textarea),
+      &[type='checkbox'] + label,
+      &[type='radio'] + label {
+        outline-offset: 0.2rem;
+        outline: black auto;
+      }
+    }
+  }
+
+    // sass не поддерживает @supports not selector(:focus-visible), но есть обходной путь:
+    // https://stackoverflow.com/a/62666132
+    @supports not #{'\selector(:focus-visible)'} {
+                    &[data-focus-visible-added] {
+                      @content;
+
+                      &:not(input):not(textarea),
+                      &[type='checkbox'] + label,
+                      &[type='radio'] + label {
+                        outline-offset: 0.2rem;
+                        outline: black auto;
+                      }
+                    }
+                  }
+  }
+}
+
+// Clearfix
+// http://www.cssmojo.com/latest_new_clearfix_so_far/
+// Other clearfix options: https://github.com/stubbornella/oocss/blob/master/oocss/src/components/utils/_clearfix-me.scss
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+// Text selection
+@mixin text-selection($color-selection, $color-selection-bg) {
+  ::-moz-selection {
+    // sass-lint:disable-line no-vendor-prefixes
+    background: $color-selection-bg;
+    color: $color-selection;
+    text-shadow: none;
+  }
+
+  ::selection {
+    background: $color-selection-bg;
+    color: $color-selection;
+    text-shadow: none;
+  }
+}
+
+//Placeholders
+//Usage:
+//@include placeholder;
+@mixin placeholder {
+  // sass-lint:disable no-vendor-prefixes
+  ::-webkit-input-placeholder {
+    @content;
+  }
+
+  :-moz-placeholder {
+    @content;
+  }
+
+  ::-moz-placeholder {
+    @content;
+  }
+
+  :-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin hover-mouse-only() {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin webkit-scrollbar($color: #eaedf4, $colorActive: #cfd5dd, $width: 0.6rem) {
+  scrollbar-color: $color transparent;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: $colorActive;
+  }
+}
+
+@mixin aspect($width: 16, $height: 9) {
+  aspect-ratio: math.div($width, $height);
+
+  @supports not (aspect-ratio: math.div($width, $height)) {
+    &::before {
+      content: '';
+      float: left;
+      padding-top: calc((#{$height} / #{$width}) * 100%);
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+}
+
+@mixin aspect-clear() {
+  aspect-ratio: unset;
+
+  @supports not (aspect-ratio: unset) {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+@mixin hideScrollbar() {
+  @include hover-mouse-only {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 0 !important;
+      height: 0 !important;
+    }
+  }
+}
+
+@mixin screenReaderOnly {
+  position: fixed !important;
+  top: auto;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+
+@mixin link-hover {
+  text-decoration: none;
+  @include transition(color);
+
+  @include hover() {
+    color: $button-state !important;
+  }
+
+  &:active {
+    color: $button-state !important;
+  }
+
+  &:disabled,
+  &._disabled {
+    color: $color-text !important;
+    opacity: 0.4;
+  }
+}
+
+@mixin line-clamp($num: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Fix safari blur perfomance
+// https://graffino.com/til/how-to-fix-filter-blur-performance-issue-in-safari
+// https://stackoverflow.com/questions/70138527/css-filter-blur-not-working-properly-on-safari
+@mixin blur($px: 0, $filter...) {
+  filter: blur($px) $filter;
+  // this rule force the browser use GPU acceleration for that particular element instead of the CPU
+  transform: translate3d(0, 0, 0);
+  @content;
+}
+
+/* Миксин для брейкпоинтов */
+@mixin up($breakpoint) {
+  @if map.has-key($grid-breakpoints, $breakpoint) {
+    @media (min-width: map.get($grid-breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Брейкпоинт #{$breakpoint} не найден в \$grid-breakpoints.";
+  }
+}
+
+@mixin down($breakpoint) {
+  @if map.has-key($grid-breakpoints, $breakpoint) {
+    // Вычитаем 1px от текущего значения брейкпоинта
+    @media (max-width: #{map.get($grid-breakpoints, $breakpoint) - 1}) {
+      @content;
+    }
+  } @else {
+    @error "Брейкпоинт #{$breakpoint} не найден в \$grid-breakpoints.";
+  }
+}

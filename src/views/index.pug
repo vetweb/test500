@@ -1,0 +1,54 @@
+extends _layouts/default
+
+block content
+    .body-overlay.js-body-overlay
+    include ../ui/modal/modal
+    include ../ui/input/input
+    include ../ui/button/button
+    include _includes/blocks/header
+    include _includes/blocks/top-menu-dropdown
+
+    +modal(
+        'example-modal',
+        '',
+        'Оставьте заявку',
+        'Наш менеджер перезвонит вам и  ответит на все Ваши вопросы.'
+    )
+        form.form(id="modal-form")
+            .form__field
+                +input({
+                    label: 'Имя',
+                    id: 'name',
+                    errorMessage: 'Имя is required',
+                })(
+                    type='text',
+                    name='name',
+                    required
+                )
+            .form__field
+                +input({
+                    label: 'Имя',
+                    id: 'name',
+                    errorMessage: 'Имя is required',
+                })(
+                    type='text',
+                    name='name',
+                    required
+                )
+            .form__field
+                +input({
+                    label: 'Имя',
+                    id: 'name',
+                    errorMessage: 'Имя is required',
+                })(
+                    type='text',
+                    name='name',
+                    required
+                )
+            .form__button
+                +button({
+                    text: 'Отправить',
+                    type: 'button'
+                }).button.button--wide.button-small.button-tablet-medium.button-desktop-large
+            .form__policy.body-12.body-reg Оставляя заявку, вы соглашаетесь на обработку ваших персональных данных на условиях, определяемых <a href="##">политикой конфиденциальности</a>
+

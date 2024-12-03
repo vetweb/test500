@@ -1,0 +1,118 @@
+@use '../../scss/base/_mixins' as *;
+@use '../../scss/base/_vars' as *;
+
+.top-menu-dropdown {
+  $root: &;
+
+  position: absolute;
+  top: 92px;
+  left: 0;
+  background-color: $c-dark-blue;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+  visibility: hidden;
+  transition: all .2s;
+
+  @include up(lg) {
+    top: 135px;
+  }
+
+  &.open {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  &__wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
+    @include up(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+
+    &:first-child {
+      #{$root}__categories-links {
+        padding-left: 0;
+      }
+
+      #{$root}__link--with-icon {
+        margin-left: 0;
+      }
+    }
+
+    &:last-child {
+      #{$root}__categories-content {
+        border-right: 0;
+      }
+    }
+  }
+
+  &__categories-content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    height: 100%;
+    padding-top: 20px;
+    border-right: 1px solid $c-violet-dark;
+  }
+
+  &__categories-links {
+    height: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    border-bottom: 1px solid $c-violet-dark;
+  }
+
+  &__group-title {
+    margin-bottom: 18px;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: $c-violet;
+  }
+
+  &__promo-button {
+    width: auto;
+    margin-right: 10px;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: all .2s;
+
+    @include hover {
+      color: $c-violet;
+    }
+
+    &--with-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 0;
+      margin-left: 40px;
+    }
+  }
+
+  &__link-icon {
+    flex: 0 0 auto;
+    width: 21px;
+    height: 21px;
+    margin-right: 12px;
+  }
+}

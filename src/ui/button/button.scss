@@ -1,0 +1,124 @@
+@use '../../scss/base/_mixins' as *;
+@use '../../scss/base/_vars' as *;
+
+/* Основной стиль кнопки */
+.button {
+  $root: &;
+  background: $button-state;
+  color: $button-state-text;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all .2s;
+  box-shadow: 0 8px 24px 0 rgba(37, 186, 123, 0.4);
+  text-decoration: none;
+  text-align: center;
+
+  @include hover {
+    background: $button-state-hover;
+    box-shadow: none;
+  }
+
+  /* Модификатор small */
+  &.button-small {
+    padding: 10px 18px;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 10px;
+  }
+
+  /* Модификатор lablet-medium для md */
+  @include up(md) {
+    &.button-tablet-medium {
+      padding: 15px 25px;
+      font-size: 14px;
+      line-height: 19px;
+      border-radius: 12px;
+    }
+  }
+
+  /* Модификатор desktop-large для lg */
+  @include up(lg) {
+    &.button-desktop-large {
+      padding: 20px 40px;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 15px;
+    }
+  }
+
+  /* Стиль для вторичной кнопки */
+  &--secondary {
+    background: $button-secondary-state;
+    color: $button-secondary-state-text;
+    box-shadow: none;
+
+    @include hover {
+      background: $button-secondary-state-hover;
+    }
+  }
+  &--wide {
+    width: 100%;
+  }
+  &--no-shadow {
+    box-shadow: none;
+  }
+
+  &--link {
+    background: none;
+    font-size: 16px;
+    line-height: 22px;
+    color: $link-state;
+    border-bottom: 1px solid transparent;
+    transition: all .3s;
+    box-shadow: none;
+
+    @include hover {
+      background: none;
+      border-bottom-color: $link-state;
+    }
+
+    @include up(lg) {
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+
+  &--link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 10px;
+    border-bottom: 0;
+
+    .svgsprite {
+      width: 15px;
+      height: 10px;
+      color: $color-text;
+      transition: all .2s;
+    }
+
+    @include hover {
+      background: none;
+      border-bottom: none;
+    }
+  }
+
+  &--link-icon-left {
+    @include hover {
+      .svgsprite {
+        transform: translateX(-10px);
+      }
+    }
+  }
+
+  &--link-icon-right {
+    @include hover {
+
+      .svgsprite {
+        transform: translateX(10px);
+      }
+    }
+  }
+
+}

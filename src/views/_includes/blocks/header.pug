@@ -1,0 +1,50 @@
+include ../mixins/svgsprite
+include ../../../ui/button-inner/button-inner
+include ../../../ui/menu-button/menu-button
+
+header.header
+    .header__top
+        .container
+            .header__top-wrapper
+                ul.header__top-links
+                    li
+                        a(href="#").header__top-link About Us
+                    li
+                        a(href="#").header__top-link Reviews
+                    li
+                        a(href="#").header__top-link Blog
+                    li
+                        a(href="#").header__top-link Contact Us
+                .header__location
+                    span Serving Greater Greenville and surrounding areas
+                .header__reviews
+                    +svgsprite('goo-ic').header__reviews-logo
+                    .header__reviews-text 400+ 5-Star Reviews
+    .header__bottom
+        .container
+            .header__bottom-wrapper
+                .header__logo Logo
+                .header__menu
+                    +menu-button
+                nav.header__nav.visible-xl
+                    ul
+                        li
+                            a(href="#") Emergency
+                        li
+                            a(href="#") Service Plans
+                        li
+                            a(href="#") Financing
+                        li
+                            a(href="#") Specials
+                        li
+                            a(href="#") Service Areas
+                .header__contacts
+                    .header__phone
+                        a(href="tel:(864)210-9111").header__phone-logo-box
+                            +svgsprite('phone-ic').header__phone-logo
+                        a.visible-xl.header__phone-link(href="tel:(864)210-9111")
+                            | (864) 210-9111
+                    +button-inner({
+                        text: 'Schedule Now',
+                        type: 'button'
+                    })(data-open-modal="example-modal").visible-xl

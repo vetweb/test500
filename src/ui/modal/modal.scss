@@ -1,0 +1,70 @@
+@use '../../scss/base/_mixins' as *;
+@use '../../scss/base/_vars' as *;
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+
+  &.is-active {
+    display: flex;
+  }
+
+  &__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+
+  &__content {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    background: $color-blue900;
+    padding: 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  &__header {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  &__header-title {
+    margin-bottom: 15px;
+  }
+  &__header-description {
+    max-width: 300px;
+    margin: 0 auto;
+    color: $color-gray;
+  }
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+  }
+  &__close-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Отключение прокрутки, когда открыта модалка
+.modal-open {
+  overflow: hidden;
+}

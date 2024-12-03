@@ -1,0 +1,28 @@
+mixin select(params)
+    -
+        var {
+            /**
+             * @type {string}
+             * @description ID для селекта
+             */
+            id,
+            /**
+             * @type {array}
+             * @description Массив значений для селекта
+             */
+            options = [],
+            /**
+             * @type {string}
+             * @description Дополнительные классы для селекта
+             */
+            classes = ''
+        } = params;
+
+    .custom-select.js-custom-select(class=classes)
+        select(class="js-choice", id=id)
+            each option in options
+                option(
+                    value=option.value,
+                    selected=option.selected ? true : false,
+                    data-custom-properties=JSON.stringify(option.customProperties || {})
+                )= option.text
