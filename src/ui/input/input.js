@@ -1,5 +1,34 @@
+// Импортируем библиотеку IMask
+import IMask from 'imask';
+
 /**
- * Показывает/скрывает кнопку очистки на основе состояния фокуса и значения инпута и очищает содержимое инпута приклике
+ * Настройка масок для инпутов на странице
+ */
+export function setupInputMasks() {
+    // Маска для всех инпутов с типом tel
+    const phoneInputs = document.querySelectorAll('input[type="tel"]');
+    phoneInputs.forEach((input) => {
+        // Устанавливаем маску и начальное значение
+        const phoneMask = IMask(input, {
+            mask: '+{7} (000) 000-00-00'
+        });
+        if (!input.value) {
+            input.value = '+7'; // Устанавливаем начальное значение, если поле пустое
+        }
+    });
+
+    // Маска для всех инпутов с типом email
+    const emailInputs = document.querySelectorAll('input[type="email"]');
+    emailInputs.forEach((input) => {
+        // Устанавливаем маску для email
+        IMask(input, {
+            mask: /^\S*@?\S*$/
+        });
+    });
+}
+
+/**
+ * Показывает/скрывает кнопку очистки на основе состояния фокуса и значения инпута и очищает содержимое инпута при клике
  */
 export function setupClearInput() {
     // Находим все родительские блоки
@@ -32,7 +61,3 @@ export function setupClearInput() {
         }
     });
 }
-
-/**
- * Пример другой функции:
- */

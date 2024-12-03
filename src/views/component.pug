@@ -215,22 +215,23 @@ block content
                                 )
                             .form__field
                                 +input({
-                                    label: 'Имя',
-                                    id: 'name',
-                                    errorMessage: 'Имя is required',
+                                    label: 'Телефон',
+                                    id: 'phone',
+                                    errorMessage: 'Tel is required',
                                 })(
-                                    type='text',
-                                    name='name',
+                                    type='tel',
+                                    name='phone',
+                                    value='+7'
                                     required
                                 )
                             .form__field
                                 +input({
                                     label: 'Имя',
-                                    id: 'name',
-                                    errorMessage: 'Имя is required',
+                                    id: 'email',
+                                    errorMessage: 'Email is required',
                                 })(
-                                    type='text',
-                                    name='name',
+                                    type='email',
+                                    name='email',
                                     required
                                 )
                             .form__button
