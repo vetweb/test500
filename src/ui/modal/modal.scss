@@ -25,29 +25,36 @@
     background: rgba(0, 0, 0, 0.5);
   }
 
-
   &__content {
     position: relative;
     width: 100%;
     max-width: 540px;
     background: $color-blue900;
-    padding: 60px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1;
+
+    @include up(lg){
+      padding: 60px;
+    }
   }
+
   &__header {
     margin-bottom: 20px;
     text-align: center;
   }
+
   &__header-title {
     margin-bottom: 15px;
   }
+
   &__header-description {
     max-width: 300px;
     margin: 0 auto;
     color: $color-gray;
   }
+
   &__close {
     display: flex;
     align-items: center;
@@ -58,6 +65,7 @@
     width: 50px;
     height: 50px;
   }
+
   &__close-icon {
     width: 20px;
     height: 20px;
