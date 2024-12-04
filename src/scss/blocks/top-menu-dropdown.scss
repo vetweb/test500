@@ -4,17 +4,21 @@
 .top-menu-dropdown {
   $root: &;
 
-  position: absolute;
+  position: fixed;
   top: 92px;
   left: 0;
   background-color: $c-dark-blue;
   color: white;
   padding: 20px;
   width: 100%;
+  height: calc(100vh - 92px);
   opacity: 0;
   transform: translateY(30px);
   visibility: hidden;
+  overflow-y: auto; // Включаем прокрутку внутри меню
+  overscroll-behavior: contain; // Предотвращаем передачу событий скролла вне меню
   transition: all .2s;
+  z-index: 10;
 
   @include up(lg) {
     top: 135px;

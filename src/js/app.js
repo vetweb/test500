@@ -2,16 +2,16 @@ import { setupClearInput, setupInputMasks } from '../ui/input/input.js'
 import { modal } from '../ui/modal/modal.js'
 import { select } from '../ui/select/select.js'
 import { uiMenu } from '../ui/ui-menu/ui-menu.js'
-import {  topMenu } from "./top-menu.js";
-import Lenis from '@studio-freight/lenis'
+import {  topMenu } from "./components/top-menu.js";
+import {  stickyHeader } from "./components/stickyHeader.js";
+import Lenis from '@studio-freight/lenis';
 
 window.addEventListener('load', () => {
-// Инициализация Lenis для плавного скроллинга
     const lenis = new Lenis({
-        duration: .8,
+        duration: 0.8,
         easing: (t) => t * (2 - t),
         smoothWheel: true,
-        smoothTouch: true
+        smoothTouch: true,
     });
 
     function raf(time) {
@@ -21,8 +21,9 @@ window.addEventListener('load', () => {
 
     requestAnimationFrame(raf);
 
+    topMenu(lenis);
+    stickyHeader();
     uiMenu();
-    topMenu();
     select();
     setupClearInput();
     setupInputMasks();
